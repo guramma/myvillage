@@ -103,39 +103,49 @@ color: red;
                     </label>
                   </div>
                 </div>
-
-                <div class="section">
+                <div class="section row">
+                <div class="col-md-6">
+                    <label for="gender" class="field prepend-icon">
+                      <select name="gender" class="form-control input-lg">
+                          <option value=""> &nbsp; &nbsp;&nbsp; Gender</option>
+                          <option value="Male"> &nbsp; &nbsp;&nbsp;Male</option>
+                          <option value="Female"> &nbsp; &nbsp;&nbsp;Female</option>
+                      </select> 
+                      <label for="gender" class="field-icon">
+                        <i class="fa fa-users"></i>
+                      </label>
+                    </label>
+                  </div>
+                 <div class="col-md-6">
                   <label for="email" class="field prepend-icon">
                     <input type="email" name="email" id="email" class="gui-input" placeholder="Email address">
                     <label for="email" class="field-icon">
                       <i class="fa fa-envelope"></i>
                     </label>
                   </label>
+                  </div>
                 </div>
 
 
-                <div class="section">
+                <div class="section row">
+                <div class="col-md-6">
                   <label for="password" class="field prepend-icon">
                     <input type="password" name="password" id="password" class="gui-input" placeholder="Create a password">
                     <label for="password" class="field-icon">
                       <i class="fa fa-unlock-alt"></i>
                     </label>
                   </label>
-                </div>
-                <!-- end section -->
-
-                <div class="section">
-                  <label for="confirmPassword" class="field prepend-icon">
+                  </div>
+                  <div class="col-md-6">
+                   <label for="confirmPassword" class="field prepend-icon">
                     <input type="password" name="confirmPassword" id="confirmPassword" class="gui-input" placeholder="Retype your password">
                     <label for="confirmPassword" class="field-icon">
                       <i class="fa fa-lock"></i>
                     </label>
                   </label>
+                  </div>
                 </div>
                 <!-- end section -->
-                
-                
-                
                  <div class="section-divider mt10 mb40">
                   <span>Additional Information</span>
                 </div>
@@ -220,29 +230,28 @@ color: red;
                   <div class="section row">
                   <div class="col-md-6">
                     <label for="file" class="field prepend-icon">
-                      <input type="file" name="file" id="file" class="gui-input" placeholder="User Profile">
+                      <input type="file" name="file" id="file" class="gui-input" placeholder="User Profile" >
                       <label for="file" class="field-icon">
                         <i class="fa  fa-picture-o"></i>
                       </label>
                     </label>
                   </div>
-
-                  <div class="col-md-6">
-                    <label for="gender" class="field prepend-icon">
-                      <select name="gender" class="form-control input-lg">
-                          <option value=""> &nbsp; &nbsp;&nbsp; Gender</option>
-                          <option value="Male"> &nbsp; &nbsp;&nbsp;Male</option>
-                          <option value="Female"> &nbsp; &nbsp;&nbsp;Female</option>
-                      </select> 
-                      <label for="gender" class="field-icon">
-                        <i class="fa fa-users"></i>
+                  
+                  <div class="col-md-6 row">
+                    <label for="file" class="field prepend-icon">
+                      <input type="file" name="file1" id="file1" class="gui-input" placeholder="User Profile Background Image">
+                      <label for="file" class="field-icon">
+                        <i class="fa  fa-picture-o"></i>
                       </label>
                     </label>
                   </div>
                 </div>
 
-
-                <div class="section">
+                <div class="section row">
+                   
+                </div>
+                
+                 <div class="section row">
                   <label for="userProfile" class="field prepend-icon">
                    <textarea class="gui-input" placeholder="User Profile" name="userProfile" style="height: 114px;"></textarea>
                     <label for="userProfile" class="field-icon">
@@ -250,8 +259,8 @@ color: red;
                     </label>
                   </label>
                 </div>
+                
                 <!-- end section -->
-
                 <div class="section-divider mv40">
                   <span>Review the Terms</span>
                 </div>
@@ -323,6 +332,7 @@ color: red;
 			phoneNumber:{required:true,number:true},
 			zipcode:{required:true,number:true},
 			file:{required:true},
+			file1:{required:true},
 			gender:{required:true},
 			dateofBirth:{required:true},
 			userProfile:{required:true},
@@ -365,6 +375,9 @@ color: red;
 			},
 			file:{
 				required:"Please upload Profile Photo"
+			},
+			file1:{
+				required:"Please upload Backgroung Image"
 			},
 			gender:{
 				required:"Please choose Gender."
