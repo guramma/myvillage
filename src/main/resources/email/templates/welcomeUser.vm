@@ -1,0 +1,52 @@
+<div
+	style='background: #F6F6F6; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; margin: 0; padding: 0;'>
+	<table width='100%' cellspacing='0' cellpadding='0' border='0'
+		height='100%'>
+		<tbody>
+			<tr>
+				<td valign='top' align='center' style='padding: 20px 0 20px 0'>
+					<table width='960' cellspacing='0' cellpadding='10' border='0'
+						bgcolor='FFFFFF' style='border: 1px solid #E0E0E0;'>
+						<tbody>
+							<tr>
+								<td valign='top'>
+									<h1
+										style='font-size: 22px; font-weight: normal; line-height: 22px; margin: 0 0 11px 0;'>Hi ${customerInfo.firstName},</h1>
+										<div
+										style='font-size: 12px; line-height: 16px; margin: 0 0 8px 0;'>
+										Welcome to RentHunterZ.com. Your new account has been successfully created!  <br/><br/>
+										  Your account details are as follows:
+										  <br/>
+										  
+										  User Name: ${customerInfo.email}<br/>
+										  Password: ${customerInfo.password}<br/>
+										  Amount Charged: $${customerInfo.creditCardInfo.amount}<br/>
+										  Next Billing Date: ${renewalDate}<br/>
+										  Credit Card Number: ${creditCardNumber}<br/><br/>
+										  If you have any questions or concerns regarding your account feel free to contact Customer Service by phone <br/> or email them at support@renthunterz.com.<br/>
+										  <b>Good luck on your home search!</b>
+ 
+  										<p style="font-size: 12px;">Email sent from RentHunterZ.com | <a href="http://www.renthunterz.com/">Click Here<a> for more detail.</p>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Thanks <br/>
+									<a href="htttp://www.renthunterz.com/">RentHunterZ.com<a><br/>
+								<br/><br/>
+								</td>
+							</tr>
+							<tr>
+								<td style='background-color: #EAEAEA; text-align: center;'><div
+										style='font-size: 12px; margin: 0; text-align: center;'>
+										<strong>Rent Hunterz</strong>
+									</div></td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
