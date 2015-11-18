@@ -66,8 +66,8 @@ color: red;
               <span class="panel-title hidden">
                 <i class="fa fa-sign-in"></i>Register</span>
               <div class="section row mn">
-                <div class="col-sm-4">
-                  <a href="#" class="button btn-social facebook span-left mr5 btn-block">
+                 <div class="col-sm-4">
+                  <a href="javascript:void(0);" class="button btn-social facebook span-left mr5 btn-block" onclick="facebookLogin()">
                     <span>
                       <i class="fa fa-facebook"></i>
                     </span>Facebook</a>
@@ -100,8 +100,8 @@ color: red;
                   <div class="col-sm-7 pr30">
 
                     <div class="section row hidden">
-                      <div class="col-md-4">
-                        <a href="#" class="button btn-social facebook span-left mr5 btn-block">
+                       <div class="col-md-4">
+                        <a href="javascript:void(0);" class="button btn-social facebook span-left mr5 btn-block" onclick="facebookLogin()">
                           <span>
                             <i class="fa fa-facebook"></i>
                           </span>Facebook</a>
@@ -188,9 +188,44 @@ color: red;
   <script src="${contextPath}/resources/loginandregister/assets/js/demo/demo.js"></script>
   <script src="${contextPath}/resources/loginandregister/assets/js/main.js"></script>
   <script type="text/javascript" src="${contextPath}/resources/loginandregister/assets/js/jquery.validate.js"></script>
+   <script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
+  <script type="text/javascript" src="${contextPath}/resources/facebook/facebook.js"></script>
   
   <!-- Page Javascript -->
   <script type="text/javascript">
+  
+  function facebookLogin(){
+		FB.login(function(response) {
+			if (response.authResponse) {
+				FB.api('/me?fields=email,first_name,last_name', function(response) {
+					$.get("${contextPath}/getUserDetailsByEmail?email="+response.email).done(function(data){
+						if(data.fullstatus=="success"){
+							$(".loader-block, .loader-block-inside").show();
+							 var field = "j_username="+data.email+"&j_password="+data.password; 
+							 $.post('${contextPath}/guest/j_spring_security_check?'+field,function(res){
+								 window.location.href="${contextPath}"+res;
+							 }); 
+						}
+						else{
+							window.location.href="${contextPath}/facebooksignup?firstName="+response.first_name+"&lastName="+response.last_name+"&email="+response.email;
+						}
+					});
+				});
+			}
+		}, {scope: 'email,public_profile', return_scopes: true});
+	};
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
  $(function() {
 
     "use strict";

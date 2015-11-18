@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssis.village.common.CommonController;
 import com.ssis.village.common.CommonMessages;
@@ -119,7 +120,14 @@ public class HomeController extends CommonController implements CommonMessages {
 		return "redirect:/sign-up";
 	}
 	
-	
+	@RequestMapping(value="/facebooksignup",method={RequestMethod.GET,RequestMethod.POST})
+	public String facebooksignup(@RequestParam String firstName,@RequestParam String lastName,@RequestParam String email,Model model){
+		logger.info("Inside Sign-Up Page");
+		model.addAttribute("firstName",firstName);
+		model.addAttribute("lastName",lastName);
+		model.addAttribute("email",email);
+		return "front/signuppage";
+	}
 	
 	
 	
