@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssis.village.common.CommonController;
 import com.ssis.village.common.CommonMessages;
+import com.ssis.village.dto.MessageDto;
 import com.ssis.village.model.Users;
 
 @Controller
@@ -127,6 +129,21 @@ public class HomeController extends CommonController implements CommonMessages {
 		model.addAttribute("lastName",lastName);
 		model.addAttribute("email",email);
 		return "front/signuppage";
+	}
+	
+	@RequestMapping(value="/getUserDetailsByEmail",method={RequestMethod.GET,RequestMethod.POST})
+	public @ResponseBody MessageDto getUserDetailsByEmail(@RequestParam String email){
+		MessageDto messageDto = new MessageDto();
+		Users users = genericService.getUserByName(Users.class,email);
+		if(users!=null){
+			messageDto.setFullstatus("success");
+			messageDto.setEmail(users.getEmail());
+			messageDto.setPassword(users.getPassword());
+		}else{
+			messageDto.setFullstatus("failure");
+		}
+		
+		return messageDto;
 	}
 	
 	

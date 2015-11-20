@@ -27,16 +27,6 @@ color: red;
 .loader-block{position: fixed; left: 0; right: 0; top: 0; bottom: 0; z-index: 1000; width:100%; height: 100%; z-index: 2000; background: #000; opacity:0.8;}
 .loader-block-inside{position: absolute; top: 50%; left: 50%; width:200px; height: 200px; margin: -100px 0 0 -100px; background-image: url("${contextPath}/resources/css/lightbox-ico-loading.gif"); background-repeat: no-repeat; background-position: center;}
 </style>
-
-  <script type="text/javascript">
-  (function() {
-    var po = document.createElement('script');
-    po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://plus.google.com/js/client:plusone.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(po, s);
-  })();
-  </script>
 </head>
 
 <body class="external-page sb-l-c sb-r-c">
@@ -50,7 +40,7 @@ color: red;
           <div class="row mb15 table-layout">
             <div class="col-xs-6 va-m pln">
               <a href="dashboard.html" title="Return to Dashboard">
-                <img src="${contextPath}/resources/loginandregister/assets/img/logos/logo_white.png" title="AdminDesigns Logo" class="img-responsive w250">
+                <img src="${contextPath}/resources/loginandregister/assets/img/logos/MV-Logo-White.png" title="AdminDesigns Logo" class="img-responsive w250" style="width: 130px !important">
               </a>
             </div>
 
@@ -73,24 +63,19 @@ color: red;
                     </span>Facebook</a>
                 </div>
                 <div class="col-sm-4">
-                  <a href="javascript:void(0);" class="button btn-social twitter span-left mr5 btn-block" onclick="doTWSignIn()">
+                  <a href="https://api.twitter.com/oauth/authenticate?oauth_token=45w1kgAAAAAAaA1CAAABUSQ3Ewc" class="button btn-social twitter span-left mr5 btn-block">
                     <span>
                       <i class="fa fa-twitter"></i>
                     </span>Twitter</a>
                 </div>
                 <div class="col-sm-4">
-                 <button class="g-signin button btn-social googleplus span-left btn-block"
-									data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email"
-									data-requestvisibleactions="http://schemas.google.com/AddActivity"
-									data-clientId="378578336151-2e84bss75kp699ivffbprtslmv7a8pk2.apps.googleusercontent.com"
-									data-accesstype="offline"
-									data-callback="mycoddeSignIn"
-									data-theme="dark"
-									data-cookiepolicy="single_host_origin">
-                          <span>
-                            <i class="fa fa-google-plus"></i>
-                          </span>Google+</button>
+                  <a href="javascript:void(0);" class="button btn-social googleplus span-left mr5 btn-block" onclick="login()">
+                    <span>
+                      <i class="fa fa-google-plus"></i>
+                    </span>Google+</a>
                 </div>
+                
+                
               </div>
             </div>
 
@@ -266,39 +251,76 @@ color: red;
   });
   </script>
   
-  <script type="text/javascript">
-	var gpclass = (function(){
-	var response = undefined;
-	return {
-		mycoddeSignIn:function(response){
-			if (response['access_token']) {
-				gapi.client.load('plus','v1',this.getUserInformation);
-			} else if (response['error']) {
-			}
-		},
-		
-		getUserInformation: function(){
-			var request = gapi.client.plus.people.get( {'userId' : 'me'} );
-			request.execute( function(profile) {
-				var email = profile['emails'].filter(function(v) {
-					return v.type === 'account'; // Filter out the primary email
-				})[0].value;
-				var fName = profile.displayName;
-				alert(fName+" "+email);
-				$("#inputFullname").val(fName);
-				$("#inputEmail").val(email);
+<script>  
+  function login() 
+{
+  var myParams = {
+    'clientid' : '378578336151-2e84bss75kp699ivffbprtslmv7a8pk2.apps.googleusercontent.com',
+    'requestvisibleactions':'http://schemas.google.com/AddActivity',
+    'cookiepolicy' : 'single_host_origin',
+    'callback' : 'loginCallback',
+    'scope' : 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
+  };
+  gapi.auth.signIn(myParams);
+}
+
+function loginCallback(result)
+{
+    if(result['status']['signed_in'])
+    {
+        var request = gapi.client.plus.people.get(
+        {
+            'userId': 'me'
+        });
+        request.execute(function (resp)
+        {
+            var email = '';
+            if(resp['emails'])
+            {
+                for(i = 0; i < resp['emails'].length; i++)
+                {
+                    if(resp['emails'][i]['type'] == 'account')
+                    {
+                        email = resp['emails'][i]['value'];
+                    }
+                }
+            }
+            
+        	$.get("${contextPath}/getUserDetailsByEmail?email="+email).done(function(data){
+				if(data.fullstatus=="success"){
+					$(".loader-block, .loader-block-inside").show();
+					 var field = "j_username="+data.email+"&j_password="+data.password; 
+					 $.post('${contextPath}/guest/j_spring_security_check?'+field,function(res){
+						 window.location.href="${contextPath}"+res;
+					 }); 
+				}
+				else{
+					var fullName = resp['displayName'].split(" ");
+					firstName = fullName[0];
+					lastName = fullName[1];
+					window.location.href="${contextPath}/facebooksignup?firstName="+firstName+"&lastName="+lastName+"&email="+email;
+				}
 			});
-		}
-	};
-	})();
-	
-	function mycoddeSignIn(gpSignInResponse){
-		gpclass.mycoddeSignIn(gpSignInResponse);
-	}
-	</script>
-  
+        });
+
+    }
+
+}
+function onLoadCallback()
+{
+	//gapi.client.setApiKey('AIzaSyADaEVdh1ER74i9H6LVAzRuxbodYiA6YZw');
+	gapi.client.load('plus', 'v1',function(){});
+}
+
+    </script>
     
-  
+<script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client.js?onload=onLoadCallback';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+</script>
   
 </body>
 </html>

@@ -34,7 +34,7 @@
 <div class="top-navbar">
 <div class="container">
 <div class="logo">
-	<a href="index.html"><img src="${contextPath}/resources/frontend/assets/img/logo.png" alt="Logo"></a>
+	<a href="index.html"><img src="${contextPath}/resources/loginandregister/assets/img/logos/MV-Logo-White.png" alt="Logo" style="width: 130px;margin-top: 2px;"></a>
 </div>
 <div class="btn-toggle-nav" id="btn-toggle-nav"><i class="fa fa-bars"></i></div>
 <ul class="menus">

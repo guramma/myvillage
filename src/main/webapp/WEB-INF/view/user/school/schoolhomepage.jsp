@@ -52,7 +52,7 @@ ${successmessage}
 	<li><a href="#fakelink" class="navbar-brand"><i class="fa fa-users"></i>  Teachers List</a></li>
   </ul>
   <ul class="nav navbar-nav">
-	<li><a href="#fakelink" class="navbar-brand"><i class="fa fa-file-image-o"></i>  School Media</a></li>
+	<li><a href="${contextPath}/user/add-student-classes" class="navbar-brand"><i class="fa fa-file-image-o"></i> Add Class Subjects</a></li>
   </ul>
     <ul class="nav navbar-nav">
 	<li><a href="${contextPath}/user/student-attendence" class="navbar-brand"><i class="fa fa-file-image-o"></i> Student Attendence Report</a></li>

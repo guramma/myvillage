@@ -87,7 +87,7 @@ color: red;
                 <div class="section row">
                   <div class="col-md-6">
                     <label for="firstName" class="field prepend-icon">
-                      <input type="text" name="firstName" id="firstName" class="gui-input" placeholder="First name...">
+                      <input type="text" name="firstName" id="firstName" class="gui-input" placeholder="First name..." value="${firstName}">
                       <label for="firstName" class="field-icon">
                         <i class="fa fa-user"></i>
                       </label>
@@ -96,7 +96,7 @@ color: red;
 
                   <div class="col-md-6">
                     <label for="lastName" class="field prepend-icon">
-                      <input type="text" name="lastName" id="lastName" class="gui-input" placeholder="Last name...">
+                      <input type="text" name="lastName" id="lastName" class="gui-input" placeholder="Last name..." value="${lastName}">
                       <label for="lastName" class="field-icon">
                         <i class="fa fa-user"></i>
                       </label>
@@ -118,7 +118,7 @@ color: red;
                   </div>
                  <div class="col-md-6">
                   <label for="email" class="field prepend-icon">
-                    <input type="email" name="email" id="email" class="gui-input" placeholder="Email address">
+                    <input type="email" name="email" id="email" class="gui-input" placeholder="Email address" value="${email}">
                     <label for="email" class="field-icon">
                       <i class="fa fa-envelope"></i>
                     </label>

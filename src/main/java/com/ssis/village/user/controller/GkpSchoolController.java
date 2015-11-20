@@ -32,6 +32,14 @@ public class GkpSchoolController extends CommonController implements CommonMessa
 	}
 	
 	
+	
+	@RequestMapping(value="/add-student-classes",method={RequestMethod.GET,RequestMethod.POST})
+	public String addstudentclasses(Model model){
+		model.addAttribute("schoolactive", true);
+		return "user/school/addstudentclasses";
+	}
+	
+	
 	@RequestMapping(value="/student-attendence",method={RequestMethod.GET,RequestMethod.POST})
 	public String studentattendence(Model model){
 		model.addAttribute("schoolactive", true);

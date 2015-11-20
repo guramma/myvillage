@@ -56,7 +56,7 @@ color: red;
 			<div class="top-navbar dark-color">
 				<div class="top-navbar-inner">
 					<div class="logo-brand">
-						<a href="index.html"><img src="${contextPath}/resources/user/assets/img/sentir-logo-primary.png" alt="Sentir logo"></a>
+						<a href="index.html"><img src="${contextPath}/resources/loginandregister/assets/img/logos/MV-Logo-White.png" alt="My Village logo" style="width: 130px;margin-top: 2px;"></a>
 					</div>
 					
 					<div class="top-nav-content main-top-nav-layout">
@@ -134,6 +134,13 @@ color: red;
 						  <a href="${contextPath}/user/get-gkp-school-info">
 							  <span class="visible-sm visible-md"><i class="fa fa-flask"></i></span>
 							  <span class="hidden-sm hidden-md">GKP School</span>
+						  </a>
+						</li>
+						
+						<li class="${schoolactive?'active':''}">
+						  <a href="javascript:void(0)" id="share_button">
+							  <span class="visible-sm visible-md"><i class="fa fa-flask"></i></span>
+							  <span class="hidden-sm hidden-md">Share Link</span>
 						  </a>
 						</li>
 						
@@ -251,6 +258,54 @@ color: red;
 		<script src="${contextPath}/resources/user/assets/js/demo-panel.js"></script>
 		<script src="${contextPath}/resources/user/assets/js/shrink-main-navigation.js"></script>
 		<script type="text/javascript" src="${contextPath}/resources/loginandregister/assets/js/jquery.validate.js"></script>
-         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
+ 
+ 
+ <div id="fb-root"></div>
+<script>
+window.fbAsyncInit = function() {
+FB.init({appId: '742100769251911', status: true, cookie: true,
+xfbml: true});
+};
+(function() {
+var e = document.createElement('script'); e.async = true;
+e.src = document.location.protocol +
+'//connect.facebook.net/en_US/all.js';
+document.getElementById('fb-root').appendChild(e);
+}());
+</script>
+ 
+ 
+         
+<script type="text/javascript">
+$(document).ready(function(){
+$('#share_button').click(function(e){
+e.preventDefault();
+FB.ui(
+{
+method: 'feed',
+name: 'This is the content of the "name" field.',
+link: ' https://www.skadco.com/view-listings?userId=203',
+picture: 'https://www.skadco.com/resources/design/images/skadco.png',
+caption: 'This is the content of the "caption" field.',
+description: 'This is the content of the "description" field, below the caption.',
+message: ''
+});
+});
+});
+</script>
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
 	</body>
 </html>
