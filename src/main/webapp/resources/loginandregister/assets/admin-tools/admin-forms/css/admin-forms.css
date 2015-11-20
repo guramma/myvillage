@@ -1353,6 +1353,9 @@
 .admin-form .facebook,
 .admin-form .facebook:hover,
 .admin-form .facebook:focus,
+.admin-form .linkedin,
+.admin-form .linkedin:hover,
+.admin-form .linkedin:focus,
 .admin-form .googleplus,
 .admin-form .googleplus:hover,
 .admin-form .googleplus:focus {
@@ -1368,6 +1371,9 @@
 .admin-form .googleplus {
   background-color: #dd4b39;
 }
+.admin-form .linkedin {
+  background-color: #007BB6;
+}
 .admin-form .facebook:hover,
 .admin-form .facebook:focus {
   background-color: #25385F;
@@ -1380,6 +1386,12 @@
 .admin-form .googleplus:focus {
   background-color: #8D2418;
 }
+
+.admin-form .linkedin:hover,
+.admin-form .linkedin:focus {
+  background-color: #0A638E;
+}
+
 .admin-form .span-left {
   padding-left: 56px;
   text-align: left;
@@ -1414,6 +1426,9 @@
 }
 .admin-form .googleplus span {
   background-color: #C03121;
+}
+.admin-form .linkedin span {
+  background-color: #0A557A;
 }
 /*==================================================================
   Lists

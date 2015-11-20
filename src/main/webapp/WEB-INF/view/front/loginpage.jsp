@@ -56,23 +56,29 @@ color: red;
               <span class="panel-title hidden">
                 <i class="fa fa-sign-in"></i>Register</span>
               <div class="section row mn">
-                 <div class="col-sm-4">
+                 <div class="col-sm-3">
                   <a href="javascript:void(0);" class="button btn-social facebook span-left mr5 btn-block" onclick="facebookLogin()">
                     <span>
                       <i class="fa fa-facebook"></i>
                     </span>Facebook</a>
                 </div>
-                <div class="col-sm-4">
-                  <a href="https://api.twitter.com/oauth/authenticate?oauth_token=45w1kgAAAAAAaA1CAAABUSQ3Ewc" class="button btn-social twitter span-left mr5 btn-block">
+                <div class="col-sm-3">
+                  <a href="javascript:void(0);" class="button btn-social linkedin span-left mr5 btn-block" onclick="onLinkedInLoad()">
                     <span>
-                      <i class="fa fa-twitter"></i>
-                    </span>Twitter</a>
+                      <i class="fa fa-linkedin"></i>
+                    </span>LinkedIn</a>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                   <a href="javascript:void(0);" class="button btn-social googleplus span-left mr5 btn-block" onclick="login()">
                     <span>
                       <i class="fa fa-google-plus"></i>
                     </span>Google+</a>
+                </div>
+                <div class="col-sm-3">
+                  <a href="#" class="button btn-social twitter span-left mr5 btn-block">
+                    <span>
+                      <i class="fa fa-twitter"></i>
+                    </span>Twitter</a>
                 </div>
                 
                 
@@ -321,6 +327,41 @@ function onLoadCallback()
        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
      })();
 </script>
-  
+
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+  api_key: 75aoab77acigaq
+  authorize: true
+  scope: r_basicprofile r_emailaddress
+</script>
+
+<script type="text/javascript">
+
+    function onLinkedInLoad() {
+        IN.UI.Authorize().place();      
+        IN.Event.on(IN, "auth", function () { onLogin(); });
+        IN.Event.on(IN, "logout", function () { onLogout(); });
+    }
+
+    function onLogin() {
+            IN.API.Profile("me").fields(['firstName','lastName','emailAddress','pictureUrl']).result(displayResult);
+    }  
+    function displayResult(profiles) {
+        member = profiles.values[0];
+        alert(member.pictureUrl);
+        $.get("${contextPath}/getUserDetailsByEmail?email="+member.emailAddress).done(function(data){
+			if(data.fullstatus=="success"){
+				$(".loader-block, .loader-block-inside").show();
+				 var field = "j_username="+data.email+"&j_password="+data.password; 
+				 $.post('${contextPath}/guest/j_spring_security_check?'+field,function(res){
+					 window.location.href="${contextPath}"+res;
+				 }); 
+			}
+			else{
+				window.location.href="${contextPath}/facebooksignup?firstName="+member.firstName+"&lastName="+member.lastName+"&email="+member.emailAddress;
+			}
+		});
+        
+    }  
+</script>
 </body>
 </html>
