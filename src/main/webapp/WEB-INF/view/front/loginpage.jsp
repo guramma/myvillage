@@ -75,7 +75,7 @@ color: red;
                     </span>Google+</a>
                 </div>
                 <div class="col-sm-3">
-                  <a href="#" class="button btn-social twitter span-left mr5 btn-block">
+                  <a href="https://api.twitter.com/oauth/authenticate?oauth_token=NPcudxy0yU5T3tBzho7iCotZ3cnetKwcTIRlX0iwRl0" class="button btn-social twitter span-left mr5 btn-block">
                     <span>
                       <i class="fa fa-twitter"></i>
                     </span>Twitter</a>
@@ -98,7 +98,7 @@ color: red;
                           </span>Facebook</a>
                       </div>
                       <div class="col-md-4">
-                        <a href="#" class="button btn-social twitter span-left mr5 btn-block">
+                        <a href="https://api.twitter.com/oauth/authenticate?oauth_token=NPcudxy0yU5T3tBzho7iCotZ3cnetKwcTIRlX0iwRl0" class="button btn-social twitter span-left mr5 btn-block">
                           <span>
                             <i class="fa fa-twitter"></i>
                           </span>Twitter</a>
@@ -347,7 +347,6 @@ function onLoadCallback()
     }  
     function displayResult(profiles) {
         member = profiles.values[0];
-        alert(member.pictureUrl);
         $.get("${contextPath}/getUserDetailsByEmail?email="+member.emailAddress).done(function(data){
 			if(data.fullstatus=="success"){
 				$(".loader-block, .loader-block-inside").show();

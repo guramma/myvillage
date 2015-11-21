@@ -41,7 +41,7 @@
 <link href="${contextPath}/resources/user/assets/css/style-responsive.css" rel="stylesheet">
  <link rel="stylesheet" href="${contextPath}/resources/rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>	
 <style type="text/css">
-.inputError{
+.inputError, #errorpassword{
 color: red;
 }
 .loader-block{position: fixed; left: 0; right: 0; top: 0; bottom: 0; z-index: 1000; width:100%; height: 100%; z-index: 2000; background: #000; opacity:0.8;}

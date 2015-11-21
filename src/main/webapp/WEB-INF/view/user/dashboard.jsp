@@ -195,11 +195,60 @@ ${successmessage}
 </div>
 </jsp:body>
 </userTemplate:customerDefaultDecorator>
+<script language="javascript" type="text/javascript">
+		var sessionTimeout = "<%=session.getMaxInactiveInterval()%>";
+		var sessionTimeoutWarning = parseInt(sessionTimeout)-10;
+		var mintues = sessionTimeout/60;
+		/* var milliseconds = mintues*60000;
+		setTimeout('Redirect()',milliseconds); */
+		setTimeout('Redirect()',3000);
+       function SessionWarning() {
+           var minutesForExpiry = (parseInt(sessionTimeout) - parseInt(sessionTimeoutWarning));
+           var message = "Your session will expire in another " + minutesForExpiry + " Seconds! Please refresh the page before the session expires";
+           alert(message);
+           setTimeout('Redirect()', (minutesForExpiry));
+       }
+
+       function Redirect() {
+    	   var dialog = new BootstrapDialog({
+               message: function(dialogRef){
+                   var $message = $(
+                		   "<form role='form'>"+
+               				"<div class='form-group text-center'><img src='${contextPath}/resources/user/assets/img/avatar/avatar-1.jpg' class='avatar-lock img-circle' alt='Avatar'></div>"+
+               				"<div class='form-group'><h4 class='text-center'><strong>Paris Hawker</strong></h4></div>"+
+               				"<div class='form-group has-feedback lg left-feedback no-label'>"+
+               				"<input type='password' class='form-control no-border input-lg rounded' placeholder='Enter password' autofocus id='dialogPassword' title='Please Enter Password'>"+
+               				"<span class='fa fa-unlock form-control-feedback'></span></div>"+
+               				"<span id='errorpassword'></span>"+
+               			   "</form>");
+                   var $button = $('<button type="button" class="btn btn-primary btn-lg btn-block">Login</button>');
+                   $button.on('click', function(event){
+                	   var password = $("#dialogPassword").val();
+                	   if(password==""){
+                		   $("#errorpassword").html("Please Enter Password");
+                	   }
+                       //event.data.dialogRef.close();
+                   });
+                   $message.append($button);
+           
+                   return $message;
+               },
+               closable: false
+           });
+           dialog.realize();
+           dialog.getModalHeader().hide();
+           dialog.getModalFooter().hide();
+           dialog.getModalDialog().css('width','500px');
+           dialog.getModalBody().css('background-color', '#0088cc');
+           dialog.getModalBody().css('color', '#fff');
+           dialog.open(); 
+       }
+</script>
 <script>
 $(function(){
 	$('#test').weatherfeed(['INXX0031']);	
 	/* $.get("${contextPath}/user/alerts-information").done(function(data){
-		BootstrapDialog.alert(data);
+		//BootstrapDialog.alert(data);
 	}); */
 });
 </script>
