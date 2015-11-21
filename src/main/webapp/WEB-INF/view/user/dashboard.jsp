@@ -238,7 +238,7 @@ ${successmessage}
            dialog.realize();
            dialog.getModalHeader().hide();
            dialog.getModalFooter().hide();
-           dialog.getModalDialog().css('width','500px');
+           /* dialog.getModalDialog().css('width','500px'); */
            dialog.getModalBody().css('background-color', '#0088cc');
            dialog.getModalBody().css('color', '#fff');
            dialog.open(); 
