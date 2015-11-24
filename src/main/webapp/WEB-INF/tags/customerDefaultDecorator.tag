@@ -40,6 +40,7 @@
 <link href="${contextPath}/resources/user/assets/css/style.css" rel="stylesheet">
 <link href="${contextPath}/resources/user/assets/css/style-responsive.css" rel="stylesheet">
  <link rel="stylesheet" href="${contextPath}/resources/rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>	
+<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/comet.chat.css"/>
 <style type="text/css">
 .inputError, #errorpassword{
 color: red;
@@ -61,7 +62,11 @@ color: red;
 					
 					<div class="top-nav-content main-top-nav-layout">
 						<div class="btn-collapse-main-navigation" data-toggle="collapse" data-target="#top-main-navigation">
-							<i class="fa fa-bars"></i>
+							<i class="fa fa-bars"></i> 
+						</div>
+						<div class="btn-collapse-sidebar-right">
+							 <span class="visible-sm visible-md"><i class="fa fa-bullhorn"></i></span>
+							  <span class="hidden-sm hidden-md">Chat</span>
 						</div>
 						
 						<ul class="nav-user navbar-right">
@@ -144,71 +149,33 @@ color: red;
 						  </a>
 						</li>
 						
-						<li class="dropdown">
-						  <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
-							  <span class="visible-sm visible-md"><i class="fa fa-shopping-cart"></i></span>
-							  <span class="hidden-sm hidden-md">Store</span>
-						  </a>
-						  <ul class="dropdown-menu square margin-list-rounded with-triangle">
-							<li><a href="store-product-list.html">Product list</a></li>
-							<li><a href="store-product-column.html">Product column</a></li>
-							<li><a href="store-product-masonry.html">Product masonry</a></li>
-							<li><a href="store-product-detail.html">Product detail</a></li>
-							<li><a href="store-shopping-cart.html">Shopping cart</a></li>
-							<li><a href="store-checkout.html">Checkout</a></li>
-							<li><a href="store-new-product.html">Add new product</a></li>
-							<li><a href="store-orderlist.html">Order list</a></li>
-						  </ul>
-						</li>
 						
-						<li class="dropdown">
-						  <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
-							  <span class="visible-sm visible-md"><i class="fa fa-home"></i></span>
-							  <span class="hidden-sm hidden-md">Real estate</span>
-						  </a>
-						  <ul class="dropdown-menu square margin-list-rounded with-triangle">
-							<li><a href="real-estate-property-list.html">Property list</a></li>
-							<li><a href="real-estate-property-column.html">Property column</a></li>
-							<li><a href="real-estate-property-masonry.html">Property masonry</a></li>
-							<li><a href="real-estate-property-detail.html">Property detail</a></li>
-							<li><a href="real-estate-property-search.html">Search property</a></li>
-						  </ul>
-						</li>
 						
-						<li class="dropdown">
-						  <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
-							  <span class="visible-sm visible-md"><i class="fa fa-comment"></i></span>
-							  <span class="hidden-sm hidden-md">Blog</span><span class="hidden-sm hidden-md label label-success span-sidebar">TOP</span>
-						  </a>
-						  <ul class="dropdown-menu square margin-list-rounded with-triangle">
-							<li><a href="blog-list.html">Blog list</a></li>
-							<li><a href="blog-column.html">Blog column</a></li>
-							<li><a href="blog-masonry.html">Blog masonry</a></li>
-							<li><a href="blog-detail.html">Blog detail</a></li>
-							<li><a href="blog-home.html">Featured home</a></li>
-							<li><a href="blog-new.html">Add new blog</a></li>
-							<li><a href="blog-comments.html">Comments</a></li>
-						  </ul>
-						</li>
-						
-						<li class="dropdown">
-						  <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
-							  <span class="visible-sm visible-md"><i class="fa fa-users"></i></span>
-							  <span class="hidden-sm hidden-md">Social</span>
-						  </a>
-						  <ul class="dropdown-menu square margin-list-rounded with-triangle">
-							<li><a href="social-home.html">Home activity</a></li>
-							<li><a href="social-my-profile.html">My profile</a></li>
-							<li><a href="social-friendlist.html">Friend list <span class="badge badge-info span-sidebar">5</span></a></li>
-							<li><a href="social-timeline.html">Timeline</a></li>
-							<li><a href="social-photos.html">Photos</a></li>
-						  </ul>
-						</li>
 					  </ul>
 					</div>
 				  </div>
 				</nav>
 			</div>
+			
+			
+			
+			<div class="sidebar-right-heading">
+				<ul class="nav nav-tabs square nav-justified">
+				  <li class="active"><a href="#online-user-sidebar" data-toggle="tab"><i class="fa fa-comments"></i></a></li>
+				</ul>
+			</div><!-- /.sidebar-right-heading -->
+			<!-- BEGIN SIDEBAR RIGHT -->
+			<div class="sidebar-right sidebar-nicescroller">
+				<div class="tab-content">
+				  <div class="tab-pane fade in active" id="online-user-sidebar">
+					<ul class="sidebar-menu online-user">
+					  <div id="members"></div>
+						
+					</ul>
+				  </div>
+				</div><!-- /.tab-content -->
+			</div><!-- /.sidebar-right -->
+
 			<div class="page-content no-left-sidebar">
 				<jsp:doBody/>
 				<footer>
@@ -217,9 +184,14 @@ color: red;
 				</footer>
 			</div>
 		</div>
+		<input type="hidden" value="${userdisplay.firstName} ${userdisplay.lastName}" id="userName">
 		<div id="back-top">
 			<a href="#top"><i class="fa fa-chevron-up"></i></a>
 		</div>
+
+ <div class="allChatDivs">	
+</div>
+
 
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="${contextPath}/resources/user/assets/js/bootstrap.min.js"></script>
@@ -260,6 +232,14 @@ color: red;
 		<script type="text/javascript" src="${contextPath}/resources/loginandregister/assets/js/jquery.validate.js"></script>
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
+       <script type="text/javascript" src="${contextPath}/resources/org/cometd.js"></script>
+		<script type="text/javascript" src="${contextPath}/resources/org/cometd/AckExtension.js"></script>
+		<script type="text/javascript" src="${contextPath}/resources/org/cometd/ReloadExtension.js"></script>
+		<script type="text/javascript" src="${contextPath}/resources/jquery/jquery.cookie.js"></script>
+		<script type="text/javascript" src="${contextPath}/resources/jquery/jquery.cometd.js"></script>
+		<script type="text/javascript" src="${contextPath}/resources/jquery/jquery.cometd-reload.js"></script>
+		<script type="text/javascript" src="${contextPath}/resources/jquery/chat.window.js"></script>
+		<script type="text/javascript" src="${contextPath}/resources/jquery/comet.chat.js"></script>
  
  
  <div id="fb-root"></div>
@@ -296,16 +276,121 @@ message: ''
 });
 </script>
          
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
+ <script language="javascript" type="text/javascript">
+		var sessionTimeout = "<%=session.getMaxInactiveInterval()%>";
+		var sessionTimeoutWarning = parseInt(sessionTimeout)-10;
+		var mintues = sessionTimeout/60;
+		var milliseconds = mintues*60000;
+		setTimeout('Redirect()',milliseconds);
+		//setTimeout('Redirect()',3000);
+       function SessionWarning() {
+           var minutesForExpiry = (parseInt(sessionTimeout) - parseInt(sessionTimeoutWarning));
+           var message = "Your session will expire in another " + minutesForExpiry + " Seconds! Please refresh the page before the session expires";
+           alert(message);
+           setTimeout('Redirect()', (minutesForExpiry));
+       }
+
+       function Redirect() {
+    	   var dialog = new BootstrapDialog({
+               message: function(dialogRef){
+                   var $message = $(
+                		   "<form role='form'>"+
+               				"<div class='form-group text-center'><img src='${contextPath}/userProfiles/${userdisplay.userProfileModifiedName}' class='avatar-lock img-circle' alt='Avatar' style='height: 133px;width: 120px;'></div>"+
+               				"<div class='form-group'><h4 class='text-center'><strong>Paris Hawker</strong></h4></div>"+
+               				"<div class='form-group has-feedback lg left-feedback no-label'>"+
+               				"<input type='password' class='form-control no-border input-lg rounded' placeholder='Enter password' autofocus id='dialogPassword' title='Please Enter Password'>"+
+               				"<span class='fa fa-unlock form-control-feedback'></span></div>"+
+               				"<span id='errorpassword'></span>"+
+               			   "</form>");
+                   var $button = $('<button type="button" class="btn btn-primary btn-lg btn-block">Login</button>');
+                   $button.on('click', function(event){
+                	   var password = $("#dialogPassword").val();
+                	   if(password==""){
+                		   $("#errorpassword").html("Please Enter Password");
+                	   }
+                	   else{
+                		   var oldPassword = "${userdisplay.password}";
+                		   if(password!=oldPassword){
+                			   $("#errorpassword").html("Please Enter Correct Password"); 
+                		   }else{
+                			   alert("Lokesh");
+                		   }
+                	   }
+                       //event.data.dialogRef.close();
+                   });
+                   $message.append($button);
+           
+                   return $message;
+               },
+               closable: false
+           });
+           dialog.realize();
+           dialog.getModalHeader().hide();
+           dialog.getModalFooter().hide();
+           /* dialog.getModalDialog().css('width','500px'); */
+           dialog.getModalBody().css('background-color', '#0088cc');
+           dialog.getModalBody().css('color', '#fff');
+           dialog.open(); 
+       }
+       
+</script>        
+ <script type="text/javascript">
+    
+    var chatWindowArray = [];
+    
+    var config = {
+        contextPath: '${pageContext.request.contextPath}'
+    };
+	
+	function getChatWindowByUserPair(loginUserName, peerUserName) {
+		
+		var chatWindow;
+		
+		for(var i = 0; i < chatWindowArray.length; i++) {
+			var windowInfo = chatWindowArray[i];
+			if (windowInfo.loginUserName == loginUserName && windowInfo.peerUserName == peerUserName) {
+				chatWindow =  windowInfo.windowObj;
+			}
+		}
+		
+		return chatWindow;
+	}
+	
+	function createWindow(loginUserName, peerUserName) {
+		
+		var chatWindow = getChatWindowByUserPair(loginUserName, peerUserName);
+		
+		if (chatWindow == null) { //Not chat window created before for this user pair.
+			chatWindow = new ChatWindow(); //Create new chat window.
+			chatWindow.initWindow({
+				loginUserName:loginUserName, 
+				peerUserName:peerUserName,
+				windowArray:chatWindowArray});
+			
+			//collect all chat windows opended so far.
+			var chatWindowInfo = { peerUserName:peerUserName, 
+					               loginUserName:loginUserName,
+					               windowObj:chatWindow 
+					             };
+			
+			chatWindowArray.push(chatWindowInfo);
+    	}
+		
+		chatWindow.show();
+		
+		return chatWindow;
+	}
+
+	function join(userName){
+		$.cometChat.join(userName);
+	}
+</script>
+<script type="text/javascript">
+	var userName = '${userdisplay.firstName}';
+	$(function(){ 
+		$.cometChat.onLoad({memberListContainerID:'members'});
+		join(userName);
+	});
+</script>    
 	</body>
 </html>
