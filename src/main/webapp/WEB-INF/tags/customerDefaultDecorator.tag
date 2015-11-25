@@ -279,7 +279,7 @@ document.getElementById('fb-root').appendChild(e);
  
          
 <script type="text/javascript">
-$(document).ready(function(){
+$(document).ready(function(){	
 $('#share_button').click(function(e){
 e.preventDefault();
 FB.ui(
@@ -295,7 +295,72 @@ message: ''
 });
 });
 </script>
-         
+<script type="text/javascript">
+		var sessionTimeout = "<%=session.getMaxInactiveInterval()%>";
+		var sessionTimeoutWarning = parseInt(sessionTimeout)-10;
+		var mintues = sessionTimeout/60;
+		var milliseconds = mintues*60000;
+		setTimeout('Redirect()',milliseconds);
+		//setTimeout('Redirect()',3000);
+       function SessionWarning() {
+           var minutesForExpiry = (parseInt(sessionTimeout) - parseInt(sessionTimeoutWarning));
+           var message = "Your session will expire in another " + minutesForExpiry + " Seconds! Please refresh the page before the session expires";
+           alert(message);
+           setTimeout('Redirect()', (minutesForExpiry));
+       }
+
+       function Redirect() {
+    	   var dialog = new BootstrapDialog({
+               message: function(dialogRef){
+                   var $message = $(
+                		   "<form role='form'>"+
+               				"<div class='form-group text-center'><img src='${contextPath}/userProfiles/${userdisplay.userProfileModifiedName}' class='avatar-lock img-circle' alt='Avatar' style='width: 100px;height: 100px;'></div>"+
+               				"<div class='form-group'><h4 class='text-center'><strong>${userdisplay.firstName} ${userdisplay.lastName}</strong></h4></div>"+
+               				"<div class='form-group has-feedback lg left-feedback no-label'>"+
+               				"<input type='password' class='form-control no-border input-lg rounded' placeholder='Enter password' autofocus id='dialogPassword' onkeypress='emptyPassword();'>"+
+               				"<span class='fa fa-unlock form-control-feedback'></span></div>"+
+               				"<span id='errorpassword'></span>"+
+               				"<input type='hidden' id='lockpassword' value='${userdisplay.password}'>"+
+               				"<input type='hidden' id='lockemail' value='${userdisplay.email}'>"+
+               			   "</form>");
+                   var $button = $('<button type="button" class="btn btn-primary btn-lg btn-block">Login</button>');
+                   $button.on('click', function(event){
+                	   var password = $("#dialogPassword").val();
+                	   if(password==""){
+                		   $("#errorpassword").html("Please Enter Password");
+                	   }else{
+                		   var oldpassword = $("#lockpassword").val();
+                		   if(oldpassword!=password){
+                			   $("#errorpassword").html("Please Enter Valid Password");  
+                		   }else{
+                			   var field = "j_username="+$("#lockemail").val()+"&j_password="+password; 
+              				 $.post('${contextPath}/guest/j_spring_security_check?'+field,function(res){
+              					window.location.reload();
+              				 }); 
+                		   }
+                	   }
+                       //event.data.dialogRef.close();
+                   });
+                   $message.append($button);
+           
+                   return $message;
+               },
+               closable: false
+           });
+           dialog.realize();
+           dialog.getModalHeader().hide();
+           dialog.getModalFooter().hide();
+           /* dialog.getModalDialog().css('width','500px'); */
+           dialog.getModalBody().css('background-color', '#0088cc');
+           dialog.getModalBody().css('color', '#fff');
+           dialog.open(); 
+       }
+            
+ function emptyPassword(){
+	 $("#errorpassword").html("");
+ }      
+       
+</script>         
          
          
          
