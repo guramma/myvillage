@@ -3,6 +3,8 @@ package com.ssis.village.user.controller;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,7 +31,7 @@ public class UserController extends CommonController implements CommonMessages {
 	}
 	
 	@RequestMapping(value="/dashboard",method={RequestMethod.GET,RequestMethod.POST})
-	public String userDashboard(Model model,Principal principal){
+	public String userDashboard(Model model,Principal principal,HttpSession session){
 		List<Sarpanches> sarpanches = genericService.getAllByOrder(Sarpanches.class,"sarpanchStartDate");
 		model.addAttribute("sarpanches",sarpanches);
 		List<FestivalDto> festivalImages = festivalService.getAllFestivalImages();
@@ -37,11 +39,17 @@ public class UserController extends CommonController implements CommonMessages {
 			model.addAttribute("festivalImages", festivalImages);
 		}
 		model.addAttribute("dashboardactive", true);
+		if(session.getAttribute("logindata")==null){
+			model.addAttribute("logindataes",true);
+		}else{
+			model.addAttribute("logindataes",false);
+		}
 		List<Users> users = gkpBookService.getRequestedUsersLitByUserName(principal.getName());
 		System.out.println(users.size());
 		if(users!=null && users.size()>0){
 			model.addAttribute("users", users);
 		}
+		session.setAttribute("logindata", "true");
 		return "user/dashboard";
 	}
 	
