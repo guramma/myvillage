@@ -41,6 +41,7 @@
 <link href="${contextPath}/resources/user/assets/css/style-responsive.css" rel="stylesheet">
  <link rel="stylesheet" href="${contextPath}/resources/rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>	
 <link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/comet.chat.css"/>
+<link rel="icon" href="${contextPath}/resources/home.ico">
 <style type="text/css">
 .inputError, #errorpassword{
 color: red;
@@ -57,7 +58,7 @@ color: red;
 			<div class="top-navbar dark-color">
 				<div class="top-navbar-inner">
 					<div class="logo-brand">
-						<a href="index.html"><img src="${contextPath}/resources/loginandregister/assets/img/logos/MV-Logo-White.png" alt="My Village logo" style="width: 130px;margin-top: 2px;"></a>
+						<a href="${contextPath}/user/dashboard"><img src="${contextPath}/resources/loginandregister/assets/img/logos/MV-Logo-White.png" alt="My Village logo" style="width: 130px;margin-top: 2px;"></a>
 					</div>
 					
 					<div class="top-nav-content main-top-nav-layout">

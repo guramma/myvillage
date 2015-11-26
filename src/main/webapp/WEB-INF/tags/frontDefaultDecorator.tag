@@ -25,6 +25,7 @@
 <link href="${contextPath}/resources/frontend/assets/css/style.css" rel="stylesheet">
 <link href="${contextPath}/resources/frontend/assets/css/style-responsive.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" media="screen" href="${contextPath}/resources/css/loader.css"/> 
+<link rel="icon" href="${contextPath}/resources/home.ico">
 <style>
 .loader-block{position: fixed; left: 0; right: 0; top: 0; bottom: 0; z-index: 1000; width:100%; height: 100%; z-index: 2000; background: #000; opacity:0.8;}
 .loader-block-inside{position: absolute; top: 50%; left: 50%; width:200px; height: 200px; margin: -100px 0 0 -100px; background-image: url("${contextPath}/resources/css/lightbox-ico-loading.gif"); background-repeat: no-repeat; background-position: center;}
@@ -34,7 +35,7 @@
 <div class="top-navbar">
 <div class="container">
 <div class="logo">
-	<a href="index.html"><img src="${contextPath}/resources/loginandregister/assets/img/logos/MV-Logo-White.png" alt="Logo" style="width: 130px;margin-top: 2px;"></a>
+	<a href="${contextPath}/"><img src="${contextPath}/resources/loginandregister/assets/img/logos/MV-Logo-White.png" alt="Logo" style="width: 130px;margin-top: 2px;"></a>
 </div>
 <div class="btn-toggle-nav" id="btn-toggle-nav"><i class="fa fa-bars"></i></div>
 <ul class="menus">
