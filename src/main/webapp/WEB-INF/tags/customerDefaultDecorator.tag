@@ -39,7 +39,7 @@
 <link href="${contextPath}/resources/user/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="${contextPath}/resources/user/assets/css/style.css" rel="stylesheet">
 <link href="${contextPath}/resources/user/assets/css/style-responsive.css" rel="stylesheet">
- <link rel="stylesheet" href="${contextPath}/resources/rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>	
+ <link rel="stylesheet" href="${contextPath}/resources/rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
 <link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/comet.chat.css"/>
 <link rel="icon" href="${contextPath}/resources/home.ico">
 <style type="text/css">
@@ -171,7 +171,6 @@ color: red;
 				  <div class="tab-pane fade in active" id="online-user-sidebar">
 					<ul class="sidebar-menu online-user">
 					  <div id="members"></div>
-						
 					</ul>
 				  </div>
 				</div><!-- /.tab-content -->
