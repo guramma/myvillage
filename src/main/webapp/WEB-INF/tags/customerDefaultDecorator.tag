@@ -169,8 +169,7 @@ color: red;
 				<div class="tab-content">
 				  <div class="tab-pane fade in active" id="online-user-sidebar">
 					<ul class="sidebar-menu online-user">
-					  <!--  <div id="members"></div> -->
-						
+					  <div id="members"></div>
 					</ul>
 				  </div>
 				</div><!-- /.tab-content -->
@@ -232,15 +231,14 @@ color: red;
 		<script type="text/javascript" src="${contextPath}/resources/loginandregister/assets/js/jquery.validate.js"></script>
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
-       <%--  <script type="text/javascript" src="${contextPath}/resources/org/cometd.js"></script>
+       <script type="text/javascript" src="${contextPath}/resources/org/cometd.js"></script>
 		<script type="text/javascript" src="${contextPath}/resources/org/cometd/AckExtension.js"></script>
 		<script type="text/javascript" src="${contextPath}/resources/org/cometd/ReloadExtension.js"></script>
-		<script type="text/javascript" src="${contextPath}/resources/jquery/jquery-1.8.2.js"></script>
 		<script type="text/javascript" src="${contextPath}/resources/jquery/jquery.cookie.js"></script>
 		<script type="text/javascript" src="${contextPath}/resources/jquery/jquery.cometd.js"></script>
 		<script type="text/javascript" src="${contextPath}/resources/jquery/jquery.cometd-reload.js"></script>
 		<script type="text/javascript" src="${contextPath}/resources/jquery/chat.window.js"></script>
-		<script type="text/javascript" src="${contextPath}/resources/jquery/comet.chat.js"></script> --%>
+		<script type="text/javascript" src="${contextPath}/resources/jquery/comet.chat.js"></script>
  
  
  <div id="fb-root"></div>
@@ -335,7 +333,7 @@ message: ''
        }
        
 </script>        
- <!-- <script type="text/javascript">
+ <script type="text/javascript">
     
     var chatWindowArray = [];
     
@@ -387,11 +385,11 @@ message: ''
 	}
 </script>
 <script type="text/javascript">
-	var userName = '${userdisplay.email}';
+	var userName = '${userdisplay.firstName}';
 	$(function(){ 
 		$.cometChat.onLoad({memberListContainerID:'members'});
 		join(userName);
 	});
-</script>        -->   
+</script>    
 	</body>
 </html>

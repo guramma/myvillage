@@ -70,9 +70,9 @@
             var sb = [];
             $.each(message.data, function() {
             	if ($.cometChat.loginUserName == this) { //login user
-            		sb[sb.length] = "<span style=\";color: #FF0000;\">" + this + "</span><br>";
+	//sb[sb.length] = "<span style=\";color: #FF0000;\">" + this + "</span><br>";
             	} else { //peer users
-            		sb[sb.length] = "<li><a href=\"#\" <span onclick=\"javascript:createWindow('" + $.cometChat.loginUserName + "', '" + this + "');\"  class=\"user-status success\"><img src=\"http://localhost:2014/Village/resources/user/assets/img/avatar/avatar-2.jpg\" class=\"ava-sidebar img-circle\"><i class=\"fa fa-mobile-phone device-status\"></i>" + this + "</span></a></li>";
+            		sb[sb.length] = "<li><a href=\"#\" <span onclick=\"javascript:createWindow('" + $.cometChat.loginUserName + "', '" + this + "');\"  class=\"user-status success\"><img src=\"/Village/resources/user/assets/img/avatar/avatar-2.jpg\" class=\"ava-sidebar img-circle\"><i class=\"fa fa-mobile-phone device-status\"></i>" + this + "</span></a></li>";
             	}
             });
             $('#' + $.cometChat.memberListContainerID).html(sb.join("")); 
