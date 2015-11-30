@@ -19,7 +19,7 @@
   <link rel="stylesheet" type="text/css" href="${contextPath}/resources/loginandregister/assets/skin/default_skin/css/theme.css">
   <link rel="stylesheet" type="text/css" href="${contextPath}/resources/loginandregister/assets/admin-tools/admin-forms/css/admin-forms.css">
   <link rel="stylesheet" type="text/css" media="screen" href="${contextPath}/resources/css/loader.css"/> 
-  <link rel="shortcut icon" href="${contextPath}/resources/loginandregister/assets/img/favicon.ico">
+  <link rel="shortcut icon" href="${contextPath}/resources/home.ico">
 <style type="text/css">
 .inputError{
 color: red;
@@ -40,8 +40,8 @@ color: red;
         <div class="admin-form theme-info mw700" style="margin-top: 3%;" id="login1">
           <div class="row mb15 table-layout">
             <div class="col-xs-6 va-m pln">
-              <a href="dashboard.html" title="Return to Dashboard">
-                <img src="${contextPath}/resources/loginandregister/assets/img/logos/logo_white.png" title="AdminDesigns Logo" class="img-responsive w250">
+              <a href="${contextPath}/" title="Return to Home Page">
+                <img src="${contextPath}/resources/loginandregister/assets/img/logos/MV-Logo-White.png" title="Village Logo" class="img-responsive w250" style="width: 130px !important">
               </a>
             </div>
 
